@@ -4,20 +4,20 @@ export const certificates = [
         issuer: "Codepolitan",
         year: "2025",
         image: "/certificates/vue.jpg",
-        link: "#"
+        link: "/certificates/vue.jpg"
     },
     {
         title: "Google Project Management",
         issuer: "Google",
         year: "2025",
         image: "/certificates/project-management.jpg",
-        link: "#"
+        link: "/certificates/project-management.jpg"
     },
     {
         title: "Junior Web Developer",
         issuer: "BNSP",
         year: "2023",
         image: "/certificates/junior-web-developer.jpeg",
-        link: "#"
+        link: "/certificates/junior-web-developer.jpeg"
     }
 ]
