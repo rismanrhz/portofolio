@@ -1,5 +1,16 @@
 <script setup>
-import { certificates } from "../../data/certificates";
+import { ref, onMounted } from "vue";
+import api from "../../services/api";
+
+const certificates = ref([]);
+
+onMounted(async () => {
+
+    const response = await api.get("/certificates");
+
+    certificates.value = response.data;
+
+});
 </script>
 
 <template>
@@ -30,7 +41,7 @@ import { certificates } from "../../data/certificates";
                     data-aos-duration="800"
                 >
                     <img
-                        :src="certificate.image"
+                        :src="'http://127.0.0.1:8000/' + certificate.image"
                         :alt="certificate.title"
                         class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
                     />

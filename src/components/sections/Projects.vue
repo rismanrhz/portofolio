@@ -1,5 +1,21 @@
 <script setup>
-import { featuredProject, projects } from "../../data/projects";
+import { ref, computed, onMounted } from "vue";
+import api from "../../services/api";
+
+const projects = ref([]);
+
+const featuredProject = computed(() => {
+  return projects.value.find(project => project.featured == 1);
+});
+
+onMounted(async () => {
+  try {
+    const response = await api.get("/projects");
+    projects.value = response.data;
+  } catch (error) {
+    console.error("Gagal mengambil data project:", error);
+  }
+});
 </script>
 
 <template>
@@ -86,7 +102,7 @@ import { featuredProject, projects } from "../../data/projects";
                         data-aos-duration="800"
                     >
                         <img
-                            :src="project.image"
+                            :src="`http://127.0.0.1:8000/storage/${project.image}`"
                             :alt="project.title"
                             class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
                         />
